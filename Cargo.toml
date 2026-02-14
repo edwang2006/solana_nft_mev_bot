@@ -1,0 +1,43 @@
+[package]
+name = "solana_nft_mev"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# 1. 异步运行时与工具
+tokio = { version = "1.36", features = ["full"] }
+futures = "0.3"
+async-trait = "0.1"
+# ... 原有的依赖 ...
+regex = "1.10"
+lazy_static = "1.4"
+
+# 2. Solana 核心生态
+solana-client = "1.18"
+solana-sdk = "1.18"
+solana-program = "1.18"
+
+solana-account-decoder = "1.18"
+solana-transaction-status = "1.18"
+
+# 3. 序列化与数据处理
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+base64 = "0.21"
+
+# 4. 高性能并发数据结构 (关键！)
+dashmap = "5.5" # 用于高频读写的内存 Orderbook/Floor Price
+
+# 5. 工具类 (日志、环境配置、错误处理)
+dotenv = "0.15"
+log = "0.4"
+env_logger = "0.11"
+anyhow = "1.0" # 生产级错误处理标准
+chrono = "0.4"
+
+# 6. Jito / gRPC (后续通过 Git 依赖或 gRPC 定义引入，暂且保留基础网络库)
+reqwest = { version = "0.11", features = ["json"] }
+tonic = "0.11" # gRPC 客户端支持
+bs58 = "0.5"
+lru = "0.12"
